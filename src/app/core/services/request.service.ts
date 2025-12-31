@@ -18,6 +18,10 @@ export class Request {
     return this.http.post<void>(`${this.baseUrl}/${id}/assign`,{auditorId})
   }
 
+  openRequest(id:number){
+    return this.http.post<void>(`${this.baseUrl}/${id}/open`,{})
+  }
+
   approveRequest(id:number){
     return this.http.post<void>(`${this.baseUrl}/${id}/approve`,{})
   }
@@ -25,4 +29,25 @@ export class Request {
   rejectRequest(id:number){
     return this.http.post<void>(`${this.baseUrl}/${id}/reject`,{})
   }
+
+  escalateRequest(id:number, reason:string){
+    return this.http.post<void>(`${this.baseUrl}/${id}/escalate`,{})
+  }
+
+  closeRequest(id:number){
+    return this.http.post<void>(`${this.baseUrl}/${id}/close`,{})
+  }
+
+  deactivateRequest(id:number, reason:string){
+    return this.http.post<void>(`${this.baseUrl}/${id}/deactivate`,{reason})
+  }
+
+  redressalCreated(id:number, payload: string){
+    return this.http.post<void>(`${this.baseUrl}/${id}/redressal-created`,{})
+  }
+
+  redressalClosed(id:number, reason: string){
+    return this.http.post<void>(`${this.baseUrl}/${id}/redressal-closed`,{reason})
+  }
+
 }
